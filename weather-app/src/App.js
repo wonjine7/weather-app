@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
+import WeatherBox from './component/WeatherBox';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import WeatherButton from './component/WeatherButton';
 
 // 앱이 시작되자마자  현재위치기반의 날씨가 보인다
 // 날씨정보에는 도시, 섭씨, 화씨 날씨상태
@@ -23,15 +26,19 @@ const getWeatherByCurrentLocation = async(lat,lon) => {
   let response = await fetch(url);
   let data = await response.json();
   console.log("data",data);
-}
+};
 
   useEffect(()=>{
-    getCurrentLocation()
+    getCurrentLocation();
   },[]);
 
   return (
     <div>
-      h1h1
+      <div className='container'>
+        <WeatherBox/>
+        <WeatherButton/>
+      </div>
+      
     </div>
   );
 }

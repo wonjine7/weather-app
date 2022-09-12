@@ -1,0 +1,21 @@
+body{
+    background: url(https://png.pngtree.com/thumb_back/fh260/background/20201012/pngtree-white-cloud-on-blue-sky-weather-background-image_410050.jpg);
+    height: 100vh;
+    background-repeat: no-repeat;   /*백그라운드 이미지 반복 막기*/
+    background-size: cover;         /*백그라운드의 여백을 커버해라*/
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.weather-box{
+    border: 3px solid white;
+    padding: 50px;
+    border-radius: 30px;
+    background-color: azure;
+}
