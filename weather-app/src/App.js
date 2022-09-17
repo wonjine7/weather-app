@@ -14,6 +14,7 @@ import WeatherButton from "./component/WeatherButton";
 
 function App() {
   const [weather, setWeather] = useState(null);
+  const [city,setCity]= useState("");
   const cities = ["paris", "new york", "tokyo", "seoul"];
 
   const getCurrentLocation = () => {
@@ -32,15 +33,27 @@ function App() {
     setWeather(data);
   };
 
+  const getWeatherByCity = async ()=>{
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8f9165131e11c92e924fec7921bcd238&units=metric`;
+    let response = await fetch(url);
+    let data = await response.json();
+    setWeather(data);
+  }
+
   useEffect(() => {
-    getCurrentLocation();
-  }, []);
+    if(city==""){
+      getCurrentLocation();
+    }else{
+      getWeatherByCity();
+    }
+  }, [city]);
+
 
   return (
     <div>
       <div className="container">
         <WeatherBox weather={weather} />
-        <WeatherButton cities={cities} />
+        <WeatherButton cities={cities} setCity={setCity}/>
       </div>
     </div>
   );
